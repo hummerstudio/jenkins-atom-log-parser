@@ -1,0 +1,53 @@
+{
+  "atomCode": "log-parser",
+  "name": "Parse log",
+  "version": "1.0.0",
+  "description": "Scans a build log against named rules and fails the step when one is breached.",
+  "execution": {
+    "packagePath": "log-parser.jar",
+    "language": "java",
+    "target": "$atom_java_path -cp log-parser.jar com.jenkinschina.atom.sdk.AtomRunner"
+  },
+  "input": {
+    "source": {
+      "label": "日志来源（buildLog 或 workspace 里的文件）",
+      "type": "vuex-input",
+      "default": "buildLog"
+    },
+    "rules": {
+      "label": "规则（JSON：名称 -> 正则，或 {pattern,min,max,level}）",
+      "type": "textarea",
+      "default": "{\"error\": \"ERROR|Exception\"}"
+    },
+    "ignoreCase": {
+      "label": "忽略大小写",
+      "type": "checkbox",
+      "default": "false"
+    },
+    "maxMatchesPerRule": {
+      "label": "每规则最多记多少条命中行",
+      "type": "vuex-input",
+      "default": "20"
+    }
+  },
+  "output": {
+    "rules": {
+      "type": "string",
+      "description": "规则数"
+    },
+    "count_<name>": {
+      "type": "string",
+      "description": "每条规则的命中数（一规则一个出参，点号换成下划线）"
+    },
+    "matches": {
+      "type": "string",
+      "description": "命中行摘要（JSON，带行号）"
+    }
+  },
+  "x-jenkins": {
+    "protocol": "jenkins-1",
+    "requires": {
+      "runner": ">=0.4.0"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Parse log",
+  "summary": "Scans a build log against named rules and fails the step when one is breached.",
+  "author": "hummerstudio",
+  "license": "MIT",
+  "tags": [
+    "official-port",
+    "log",
+    "quality"
+  ],
+  "homepage": "https://github.com/hummerstudio/jenkins-atom-log-parser"
+}

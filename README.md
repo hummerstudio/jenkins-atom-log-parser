@@ -23,5 +23,5 @@ log-parser 插件是在 master 上轮询正在跑的构建日志；原子只看�
 命中行带**行号**放进 `matches` 出参，失败时第一条命中会写进报错里，不用去翻全量日志。
 
 ```bash
-./build.sh && ./tools/smoke.sh
+mvn verify   # build + src/test/java/atom/LogParserIT.java
 ```
